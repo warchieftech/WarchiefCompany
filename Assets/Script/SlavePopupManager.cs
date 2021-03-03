@@ -57,9 +57,9 @@ public class SlavePopupManager : MonoBehaviour
         hpbar.fillAmount = (float) slave.health / 100f;
         hpText.text = string.Format(slave.health.ToString());
         stressbar.fillAmount = (float)slave.stress / 100f;
-        stressText.text = string.Format(slave.stress.ToString());
+        stressText.text = string.Format(((int)slave.stress).ToString());
         loyalbar.fillAmount = (float)slave.loyalty / 100f;
-        loyalText.text = string.Format(slave.loyalty.ToString());
+        loyalText.text = string.Format(((int)slave.loyalty).ToString());
         pay.text = slave.pay.ToString();
     }
     public void TitlePopupBtn()

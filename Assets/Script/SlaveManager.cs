@@ -9,6 +9,7 @@ public class Slave
     public string key;
     public int star;
     public string name;
+    public int maxHealth;
     public int health;
     public double stress;
     public double loyalty;
@@ -25,9 +26,10 @@ public class Slave
         this.key = key;
         this.star = star;
         this.name = name;
+        maxHealth = health;
         this.health = health;
-        this.stressBase = stress;
-        this.loyaltyBase = loyalty;
+        stressBase = stress;
+        loyaltyBase = loyalty;
         this.pay = pay;
         this.workPowerBase = workPowerBase;
     }
