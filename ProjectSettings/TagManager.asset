@@ -12,6 +12,7 @@ TagManager:
   - WorkController
   - WorkGage
   - CompanyPopup
+  - GatchaManager
   layers:
   - Default
   - TransparentFX

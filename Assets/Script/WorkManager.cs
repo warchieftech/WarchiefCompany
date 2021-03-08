@@ -27,5 +27,5 @@ public class Work
 }
 public class WorkManager : MonoBehaviour
 {
-    public Work work;
+    public List<Work> work;
 }

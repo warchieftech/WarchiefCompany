@@ -8,9 +8,13 @@ using UnityEngine.UI;
 {
     public GameObject copMoney;
     public DateManager dateManager;
+    public int maxSlaves;
     public List<Slave> Slaves;
     public List<Work> Works;
+    public GameObject workQuest;
+    public GameObject WorkTab;
 
+    private GatchaManager gatchaManager;
     private SlaveListManager slaveListManager;
     private CompanyMaster companyMaster;
     private Company cop;
@@ -24,6 +28,8 @@ using UnityEngine.UI;
         slaveListManager = GameObject.FindWithTag("SlaveList").GetComponent<SlaveListManager>();
         workController = GameObject.FindWithTag("WorkController").GetComponent<WorkController>();
         companyMaster = GameObject.FindWithTag("CompanyPopup").GetComponent<CompanyMaster>();
+        gatchaManager = GameObject.FindWithTag("GatchaManager").GetComponent<GatchaManager>();
+        maxSlaves = 3;
         cop = companyMaster.company;
         t = transform.GetComponent<TitleSwitch>();
 
@@ -139,10 +145,10 @@ using UnityEngine.UI;
         Money += temp;
     }
 
-    public void GetWork(GameObject workQuest)
+    public void GetWork(int cnt)
     {
-        Works.Add(workQuest.GetComponent<WorkManager>().work);
-        Money += workQuest.GetComponent<WorkManager>().work.downPay;
+        Works.Add(workQuest.GetComponent<WorkManager>().work[cnt]);
+        Money += workQuest.GetComponent<WorkManager>().work[cnt].downPay;
     }
     public void AddSlave(string key, int star, string name, int health, int stress, int loyalty, int pay, int workPower)
     {
@@ -163,7 +169,10 @@ using UnityEngine.UI;
             {
                 Money += Works[i].pay;
                 Works.RemoveAt(i);
-                if(Works.Count == 0)
+                workQuest.GetComponent<WorkManager>().work[int.Parse(key) - 1].workCheckPoint = 0;
+                WorkTab.transform.GetChild(int.Parse(key)).GetComponent<Button>().enabled = true;
+                WorkTab.transform.GetChild(int.Parse(key)).GetChild(1).gameObject.SetActive(false);
+                if (Works.Count == 0)
                 {
                     workController.workBtn.GetComponent<Button>().enabled = false;
                     workController.workText.text = "계약한 업무가 없습니다.";
@@ -173,6 +182,22 @@ using UnityEngine.UI;
                     workController.qCnt = 0;
                 }
             }
+        }
+    }
+    public void GatchaStart()
+    {
+        if(Money > 500000)
+        {
+            Money -= 500000;
+            gatchaManager.StartGatcha();
+        }
+    }
+    public void GatchaPremiumStart()
+    {
+        if (Money > 2000000)
+        {
+            Money -= 2000000;
+            gatchaManager.StartPremiumGatcha();
         }
     }
 }

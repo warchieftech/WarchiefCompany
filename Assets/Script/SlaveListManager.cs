@@ -13,10 +13,10 @@ public class SlaveListManager : MonoBehaviour
     private void Awake()
     {
         vec2 = SlavesList.transform.position;
+        mainSystem = GameObject.FindWithTag("GameController").GetComponent<MainMoneySystem>();
     }
     private void Start()
     {
-        mainSystem = GameObject.FindWithTag("GameController").GetComponent<MainMoneySystem>();
         //SlavesList = transform.GetChild(0).gameObject;
     }
     public void UpdateList(List<Slave> slaves)
@@ -25,16 +25,25 @@ public class SlaveListManager : MonoBehaviour
         {
             Destroy(SlavesList);
             slaveList = Instantiate(Resources.Load("character/Contents") as GameObject);
+            slaveList.GetComponent<RectTransform>().sizeDelta = new Vector2(1080, 200 * mainSystem.maxSlaves);
             slaveList.transform.SetParent(transform);
             SlavesList = slaveList;
             SlavesList.transform.position = vec2;
         }
 
-        for (int i = 0; i < slaves.Count; i++)
+        for (int i = 0; i < mainSystem.maxSlaves; i++)
         {
-            slaveImg = Instantiate(Resources.Load("character/SlaveItem") as GameObject);
-            slaveImg.GetComponent<SlaveItem>().Updater(slaves[i].title, slaves[i].name, slaves[i].key);
-            slaveImg.transform.SetParent(SlavesList.transform);
+            if(i < slaves.Count)
+            {
+                slaveImg = Instantiate(Resources.Load("character/SlaveItem") as GameObject);
+                slaveImg.GetComponent<SlaveItem>().Updater(slaves[i].title, slaves[i].name, slaves[i].key);
+                slaveImg.transform.SetParent(SlavesList.transform);
+            }
+            else
+            {
+                slaveImg = Instantiate(Resources.Load("character/EmptyItem") as GameObject);
+                slaveImg.transform.SetParent(SlavesList.transform);
+            }
         }
         transform.GetComponent<ScrollRect>().content = SlavesList.GetComponent<RectTransform>();
     }
