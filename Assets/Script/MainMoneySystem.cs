@@ -11,8 +11,10 @@ using UnityEngine.UI;
     public int maxSlaves;
     public List<Slave> Slaves;
     public List<Work> Works;
+    public List<Item> Items;
     public GameObject workQuest;
     public GameObject WorkTab;
+    public GameObject errorPopup;
 
     private GatchaManager gatchaManager;
     private SlaveListManager slaveListManager;
@@ -144,6 +146,10 @@ using UnityEngine.UI;
     {
         Money += temp;
     }
+    public void RemoveMoney(int temp)
+    {
+        Money -= temp;
+    }
 
     public void GetWork(int cnt)
     {
@@ -186,18 +192,51 @@ using UnityEngine.UI;
     }
     public void GatchaStart()
     {
-        if(Money > 500000)
+        if(Slaves.Count < maxSlaves)
         {
-            Money -= 500000;
-            gatchaManager.StartGatcha();
+            if (Money > 500000)
+            {
+                Money -= 500000;
+                gatchaManager.StartGatcha();
+            }
+            else
+            {
+                ErrorPopup("회사에 남은 돈이 부족합니다.");
+            }
+        }
+        else
+        {
+            ErrorPopup("책상이 더 필요합니다.");
         }
     }
     public void GatchaPremiumStart()
     {
-        if (Money > 2000000)
+        if(Slaves.Count < maxSlaves)
         {
-            Money -= 2000000;
-            gatchaManager.StartPremiumGatcha();
+            if (Money > 2000000)
+            {
+                Money -= 2000000;
+                gatchaManager.StartPremiumGatcha();
+            }
+            else
+            {
+                ErrorPopup("회사에 남은 돈이 부족합니다.");
+            }
         }
+        else
+        {
+            ErrorPopup("책상이 더 필요합니다.");
+        }
+    }
+    public void ErrorPopup(string comment)
+    {
+        errorPopup.SetActive(true);
+        errorPopup.transform.GetChild(0).GetComponent<Text>().text = comment;
+        Invoke("PopupCloser", 1);
+
+    }
+    void PopupCloser()
+    {
+        errorPopup.SetActive(false);
     }
 }

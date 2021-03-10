@@ -13,6 +13,7 @@ TagManager:
   - WorkGage
   - CompanyPopup
   - GatchaManager
+  - ItemsMaster
   layers:
   - Default
   - TransparentFX
