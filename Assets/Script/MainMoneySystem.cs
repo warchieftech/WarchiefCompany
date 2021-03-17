@@ -16,6 +16,7 @@ using UnityEngine.UI;
     public GameObject WorkTab;
     public GameObject errorPopup;
 
+    private TalkCargo talkCargo;
     private GatchaManager gatchaManager;
     private SlaveListManager slaveListManager;
     private CompanyMaster companyMaster;
@@ -25,8 +26,10 @@ using UnityEngine.UI;
     private WorkController workController;
     private TitleSwitch t;
     private bool payChecker = false;
+
     void Start()
     {
+        talkCargo = GameObject.FindWithTag("EventManager").GetComponent<TalkCargo>();
         slaveListManager = GameObject.FindWithTag("SlaveList").GetComponent<SlaveListManager>();
         workController = GameObject.FindWithTag("WorkController").GetComponent<WorkController>();
         companyMaster = GameObject.FindWithTag("CompanyPopup").GetComponent<CompanyMaster>();
@@ -35,8 +38,9 @@ using UnityEngine.UI;
         cop = companyMaster.company;
         t = transform.GetComponent<TitleSwitch>();
 
-        AddSlave("DragonLee", 5, "이용선", 100, 50, 50, 50000, 80);
-        AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
+        UpdateSlave();
+        //AddSlave("DragonLee", 5, "이용선", 100, 50, 50, 50000, 80);
+        //AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
         StartCoroutine(CostManager());
     }
 
@@ -55,7 +59,12 @@ using UnityEngine.UI;
 
     void Calc()
     {
-        if(dateManager.week == 6 && payChecker)   //매주 토요일마다 수당 지급
+        cop.copPayment = 0;
+        foreach (Slave slave in Slaves)
+        {
+            cop.copPayment += slave.pay;
+        }
+        if (dateManager.week == 6 && payChecker)   //매주 토요일마다 수당 지급
         {
             payChecker = false;
             foreach (Slave slave in Slaves)
@@ -74,15 +83,17 @@ using UnityEngine.UI;
         {
             if (dateManager.workDay)
             {
-                foreach (Slave slave in Slaves)
+                Money -= (cop.copPayment / 5) * 2 / 5;
+                /*foreach (Slave slave in Slaves)
                 {
                     Money -= (slave.pay / 5) * 2 / 5;
-                }
+                }*/
             }
         }
         Money -= cop.elecPay;
         copMoney.GetComponent<Text>().text = Money.ToString();
     }
+
     void StatusUpdate()
     {
         foreach(Slave s in Slaves)
@@ -142,6 +153,14 @@ using UnityEngine.UI;
 
     }
 
+    public void useText(int id)
+    {
+        StartCoroutine(talkCargo.InnerText(id));
+    }
+    public void useEventText(int id)
+    {
+        StartCoroutine(talkCargo.InnerEventText(id));
+    }
     public void AddMoney(int temp)
     {
         Money += temp;
@@ -238,5 +257,9 @@ using UnityEngine.UI;
     void PopupCloser()
     {
         errorPopup.SetActive(false);
+    }
+    public void ItemUseSlave()
+    {
+        
     }
 }

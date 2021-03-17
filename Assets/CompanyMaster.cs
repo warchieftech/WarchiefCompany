@@ -9,6 +9,7 @@ public class Company
     public string copName;
     public int copPower;
     public int elecPay;
+    public int copPayment;
 
     public Company(string copName, int copPower, int elecPay)
     {
@@ -24,11 +25,13 @@ public class CompanyMaster : MonoBehaviour
     public Text copName;
     public Text copPower;
     public Text elecPay;
+    public Text copPay;
 
     public void Updater()
     {
         copName.text = company.copName;
         copPower.text = company.copPower.ToString();
         elecPay.text = company.elecPay.ToString();
+        copPay.text = company.copPayment.ToString();
     }
 }

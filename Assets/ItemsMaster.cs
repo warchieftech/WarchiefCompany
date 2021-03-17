@@ -19,6 +19,7 @@ public class ItemsMaster : MonoBehaviour
     public GameObject ItemBox;
     public GameObject BuyingPopup;
     public MainMoneySystem mainSystem;
+    public ItemBoxManager itemBoxManager;
     public List<Item> items;
     private int selectId;
 
@@ -34,7 +35,15 @@ public class ItemsMaster : MonoBehaviour
     }
     public void UseItem(int id)
     {
-        items[id].cnt--;
+        if(mainSystem.Items[id].cnt > 0)
+        {
+            items[id].cnt--;
+            itemBoxManager.UpdateAll();
+        }
+        else
+        {
+            mainSystem.ErrorPopup("아이템의 갯수가 부족합니다.");
+        }
     }
     public void BuyingItem()
     {
