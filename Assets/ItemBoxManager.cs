@@ -50,7 +50,5 @@ public class ItemBoxManager : MonoBehaviour
             itemCargo.transform.SetParent(inventory.transform);
 
         }
-        //transform.GetComponent<RectTransform>().sizeDelta = new Vector2(952, 265 * mainSystem.Items.Count);
-        //inventory.transform.GetComponent<RectTransform>().sizeDelta = new Vector2(952, 265 * mainSystem.Items.Count);
     }
 }

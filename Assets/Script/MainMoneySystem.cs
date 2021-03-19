@@ -15,6 +15,7 @@ using UnityEngine.UI;
     public GameObject workQuest;
     public GameObject WorkTab;
     public GameObject errorPopup;
+    public int getWorkCnt;
 
     private TalkCargo talkCargo;
     private GatchaManager gatchaManager;
@@ -34,13 +35,13 @@ using UnityEngine.UI;
         workController = GameObject.FindWithTag("WorkController").GetComponent<WorkController>();
         companyMaster = GameObject.FindWithTag("CompanyPopup").GetComponent<CompanyMaster>();
         gatchaManager = GameObject.FindWithTag("GatchaManager").GetComponent<GatchaManager>();
-        maxSlaves = 3;
+        //maxSlaves = 3;
         cop = companyMaster.company;
         t = transform.GetComponent<TitleSwitch>();
 
         UpdateSlave();
-        //AddSlave("DragonLee", 5, "이용선", 100, 50, 50, 50000, 80);
-        //AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
+        AddSlave("DragonLee", 5, "이용선", 100, 50, 50, 50000, 80);
+        AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
         StartCoroutine(CostManager());
     }
 
@@ -84,10 +85,6 @@ using UnityEngine.UI;
             if (dateManager.workDay)
             {
                 Money -= (cop.copPayment / 5) * 2 / 5;
-                /*foreach (Slave slave in Slaves)
-                {
-                    Money -= (slave.pay / 5) * 2 / 5;
-                }*/
             }
         }
         Money -= cop.elecPay;
@@ -170,10 +167,10 @@ using UnityEngine.UI;
         Money -= temp;
     }
 
-    public void GetWork(int cnt)
+    public void GetWork()
     {
-        Works.Add(workQuest.GetComponent<WorkManager>().work[cnt]);
-        Money += workQuest.GetComponent<WorkManager>().work[cnt].downPay;
+        Works.Add(workQuest.GetComponent<WorkManager>().work[getWorkCnt]);
+        Money += workQuest.GetComponent<WorkManager>().work[getWorkCnt].downPay;
     }
     public void AddSlave(string key, int star, string name, int health, int stress, int loyalty, int pay, int workPower)
     {
@@ -195,8 +192,8 @@ using UnityEngine.UI;
                 Money += Works[i].pay;
                 Works.RemoveAt(i);
                 workQuest.GetComponent<WorkManager>().work[int.Parse(key) - 1].workCheckPoint = 0;
-                WorkTab.transform.GetChild(int.Parse(key)).GetComponent<Button>().enabled = true;
-                WorkTab.transform.GetChild(int.Parse(key)).GetChild(1).gameObject.SetActive(false);
+                workController.WorkTab.transform.GetChild(int.Parse(key) - 1).GetComponent<Button>().enabled = true;
+                workController.WorkTab.transform.GetChild(int.Parse(key) - 1).GetChild(2).gameObject.SetActive(false);
                 if (Works.Count == 0)
                 {
                     workController.workBtn.GetComponent<Button>().enabled = false;

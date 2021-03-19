@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Item
 {
+    [Header("true : 선택형 / false : 즉시사용")]
+    public bool type;
     public int id;
     public int cnt;
     public string name;
@@ -18,10 +20,13 @@ public class ItemsMaster : MonoBehaviour
 {
     public GameObject ItemBox;
     public GameObject BuyingPopup;
+    public GameObject usingPopup;
     public MainMoneySystem mainSystem;
     public ItemBoxManager itemBoxManager;
     public List<Item> items;
     private int selectId;
+    private int useId;
+    public Slave slave;
 
     private void Start()
     {
@@ -35,15 +40,38 @@ public class ItemsMaster : MonoBehaviour
     }
     public void UseItem(int id)
     {
+        useId = id;
         if(mainSystem.Items[id].cnt > 0)
         {
-            items[id].cnt--;
-            itemBoxManager.UpdateAll();
+            if (mainSystem.Items[id].type)
+            {
+                usingPopup.GetComponent<Canvas>().enabled = true;
+            }
+            else
+            {
+                items[id].cnt--;
+                UseItem();
+                itemBoxManager.UpdateAll();
+            }
         }
         else
         {
             mainSystem.ErrorPopup("아이템의 갯수가 부족합니다.");
         }
+    }
+    public void SelectSlave(string key)
+    {
+        items[useId].cnt--;
+        for(int i = 0; i < mainSystem.Slaves.Count; i++)
+        {
+            if(mainSystem.Slaves[i].key == key)
+            {
+                this.slave = mainSystem.Slaves[i];
+            }
+        }
+        UseItem();
+        itemBoxManager.UpdateAll();
+        usingPopup.GetComponent<Canvas>().enabled = false;
     }
     public void BuyingItem()
     {
@@ -53,5 +81,24 @@ public class ItemsMaster : MonoBehaviour
     public void SetId(int x)
     {
         selectId = x;
+    }
+
+    public void UseItem()
+    {
+        switch (useId)
+        {
+            case 0:
+               slave.health += 15;
+                break;
+            case 1:
+               slave.stressBase -= 5;
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
     }
 }

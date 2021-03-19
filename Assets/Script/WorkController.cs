@@ -5,18 +5,24 @@ using UnityEngine.UI;
 
 public class WorkController : MonoBehaviour
 {
+    public GameObject WorkTab;
     public GameObject workBtn;
     public GameObject leftBtn;
     public GameObject rightBtn;
     public GameObject popup;
+    public GameObject newPopup;
     public Text workText;
     public MainMoneySystem gameSystem;
     public int qCnt = 0;
     private WorkPopupManager workPopupManager;
+    private WorkPopupManager newWorkPopupManager;
+    private WorkManager workManager;
     void Start()
     {
         workPopupManager = popup.GetComponent<WorkPopupManager>();
+        newWorkPopupManager = newPopup.GetComponent<WorkPopupManager>();
         gameSystem = GameObject.FindWithTag("GameController").GetComponent<MainMoneySystem>();
+        workManager = GameObject.FindWithTag("EventManager").GetComponent<WorkManager>();
         workText = workBtn.transform.GetChild(0).GetComponent<Text>();
     }
 
@@ -76,5 +82,18 @@ public class WorkController : MonoBehaviour
         workPopupManager.stars.level = gameSystem.Works[qCnt].star;
         workPopupManager.stars.StarUpdate();
         popup.GetComponent<Canvas>().enabled = true;
+    }
+    public void ClickNewWork(int cCnt)
+    {
+        gameSystem.getWorkCnt = cCnt;
+        WorkTab.transform.GetChild(cCnt).GetComponent<Button>().enabled = false;
+        WorkTab.transform.GetChild(cCnt).GetChild(2).gameObject.SetActive(true);
+        newWorkPopupManager.title.text = workManager.work[cCnt].name;
+        newWorkPopupManager.downPay.text = workManager.work[cCnt].downPay.ToString();
+        newWorkPopupManager.pay.text = workManager.work[cCnt].pay.ToString();
+        newWorkPopupManager.workGage.text = workManager.work[cCnt].workPoint.ToString();
+        newWorkPopupManager.stars.level = workManager.work[cCnt].star;
+        newWorkPopupManager.stars.StarUpdate();
+        newPopup.GetComponent<Canvas>().enabled = true;
     }
 }
