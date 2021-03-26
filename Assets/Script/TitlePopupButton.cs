@@ -7,7 +7,7 @@ public class TitlePopupButton : MonoBehaviour
 {
     public int key;
     public Image titleImg;
-    public string Name;
+    public Text Name;
     [TextArea]
     public string Content;
 
@@ -24,7 +24,7 @@ public class TitlePopupButton : MonoBehaviour
         slaveKey = popup.slaveKey;
         popup.titleKey = this.key;
         popup.Img.sprite = this.titleImg.sprite;
-        popup.Name.text = this.Name;
+        popup.Name.text = this.Name.text;
         popup.Content.text = this.Content;
         popup.GetComponent<Canvas>().enabled = true;
     }

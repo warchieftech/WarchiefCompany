@@ -34,9 +34,20 @@ public class ItemsMaster : MonoBehaviour
     }
     public void GetItem()
     {
-        mainSystem.RemoveMoney((int) items[selectId].price);
-        items[selectId].cnt++;
-        BuyingPopup.SetActive(false);
+        if (mainSystem.GetItem((int) items[selectId].price))
+        {
+            mainSystem.RemoveMoney((int)items[selectId].price);
+            items[selectId].cnt++;
+            mainSystem.maxSlaves = mainSystem.Items[0].cnt;
+            mainSystem.UpdateSlave();
+            BuyingPopup.SetActive(false);
+            mainSystem.ErrorPopup("구매에 성공했습니다.");
+        }
+        else
+        {
+            BuyingPopup.SetActive(false);
+            mainSystem.ErrorPopup("잔액이 부족합니다.");
+        }
     }
     public void UseItem(int id)
     {
@@ -88,13 +99,13 @@ public class ItemsMaster : MonoBehaviour
         switch (useId)
         {
             case 0:
-               slave.health += 15;
+
                 break;
             case 1:
-               slave.stressBase -= 5;
+                slave.health += 15;
                 break;
             case 2:
-
+                slave.stressBase -= 5;
                 break;
             case 3:
 

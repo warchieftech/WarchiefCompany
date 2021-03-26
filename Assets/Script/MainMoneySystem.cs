@@ -6,47 +6,53 @@ using UnityEngine.UI;
 
     public class MainMoneySystem : MonoBehaviour
 {
+    public TalkCargo talkCargo;
+    public GatchaManager gatchaManager;
+    public SlaveListManager slaveListManager;
+    public CompanyMaster companyMaster;
+    public WorkController workController;
+
     public GameObject copMoney;
     public DateManager dateManager;
     public int maxSlaves;
     public List<Slave> Slaves;
     public List<Work> Works;
     public List<Item> Items;
+    public List<Title> Titles;
     public GameObject workQuest;
     public GameObject WorkTab;
     public GameObject errorPopup;
     public int getWorkCnt;
 
-    private TalkCargo talkCargo;
-    private GatchaManager gatchaManager;
-    private SlaveListManager slaveListManager;
-    private CompanyMaster companyMaster;
+
     private Company cop;
     private int Money = 5000000;
     private int workPower;
-    private WorkController workController;
     private TitleSwitch t;
     private bool payChecker = false;
 
-    void Start()
+/*    void Awake()
     {
         talkCargo = GameObject.FindWithTag("EventManager").GetComponent<TalkCargo>();
         slaveListManager = GameObject.FindWithTag("SlaveList").GetComponent<SlaveListManager>();
         workController = GameObject.FindWithTag("WorkController").GetComponent<WorkController>();
         companyMaster = GameObject.FindWithTag("CompanyPopup").GetComponent<CompanyMaster>();
         gatchaManager = GameObject.FindWithTag("GatchaManager").GetComponent<GatchaManager>();
+    }*/
+    void Start()
+    {
         //maxSlaves = 3;
         cop = companyMaster.company;
         t = transform.GetComponent<TitleSwitch>();
 
-        UpdateSlave();
-        AddSlave("DragonLee", 5, "이용선", 100, 50, 50, 50000, 80);
-        AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
+        //AddSlave("DragonLee", 5, "이용", 100, 50, 50, 50000, 80);
+        //AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
         StartCoroutine(CostManager());
     }
 
     IEnumerator CostManager()
     {
+        UpdateSlave();
         while (true)
         {
             yield return new WaitForSeconds(1);
@@ -250,6 +256,11 @@ using UnityEngine.UI;
         errorPopup.transform.GetChild(0).GetComponent<Text>().text = comment;
         Invoke("PopupCloser", 1);
 
+    }
+    public bool GetItem(int price)
+    {
+        if (Money >= price) return true;
+        else return false;
     }
     void PopupCloser()
     {

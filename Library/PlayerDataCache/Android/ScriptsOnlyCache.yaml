@@ -5,6 +5,9 @@ ScriptsOnlyBuild:
     - DateManager
     - GatchaManager
     - GatchaPlayManager
+    - ItemBox
+    - ItemBoxManager
+    - ItemsMaster
     - MainMoneySystem
     - MoveScean
     - SlaveItem
@@ -14,10 +17,13 @@ ScriptsOnlyBuild:
     - SlavePopupOpener
     - StarPoint
     - TabPage
+    - TalkCargo
+    - TitleManager
     - TitlePopup
     - TitlePopupButton
     - TitlePopupObj
     - TitleSwitch
+    - WorkBtn
     - WorkController
     - WorkManager
     - WorkPopupManager
@@ -30,15 +36,16 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.Mobile.AndroidLogcat.Editor.dll:
+    - Unity.Android.Logcat.AndroidLogcatConsoleWindow
+    - Unity.Android.Logcat.AndroidLogcatManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -49,7 +56,9 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
     - UnityEngine.UI.RectMask2D
@@ -89,13 +98,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11230}
     - Class: 114
-      Script: {instanceID: 11332}
+      Script: {instanceID: 11330}
     - Class: 114
-      Script: {instanceID: 11632}
+      Script: {instanceID: 11630}
     - Class: 114
-      Script: {instanceID: 11646}
+      Script: {instanceID: 11644}
+    - Class: 114
+      Script: {instanceID: 11738}
+    - Class: 114
+      Script: {instanceID: 11848}
     - Class: 114
       Script: {instanceID: 11902}
     - Class: 114
@@ -117,33 +130,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13006}
     - Class: 114
-      Script: {instanceID: 13190}
+      Script: {instanceID: 13192}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 13212}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13422}
     - Class: 114
-      Script: {instanceID: 14098}
+      Script: {instanceID: 13434}
     - Class: 114
-      Script: {instanceID: 14204}
+      Script: {instanceID: 13840}
     - Class: 114
-      Script: {instanceID: 14390}
+      Script: {instanceID: 14106}
     - Class: 114
-      Script: {instanceID: 14396}
+      Script: {instanceID: 14212}
     - Class: 114
-      Script: {instanceID: 14458}
+      Script: {instanceID: 14398}
     - Class: 114
-      Script: {instanceID: 14664}
+      Script: {instanceID: 14404}
     - Class: 114
-      Script: {instanceID: 14674}
+      Script: {instanceID: 14466}
     - Class: 114
-      Script: {instanceID: 14944}
+      Script: {instanceID: 14672}
     - Class: 114
-      Script: {instanceID: 14962}
+      Script: {instanceID: 14682}
     - Class: 114
-      Script: {instanceID: 14984}
+      Script: {instanceID: 14952}
     - Class: 114
-      Script: {instanceID: 15034}
+      Script: {instanceID: 14970}
+    - Class: 114
+      Script: {instanceID: 14992}
+    - Class: 114
+      Script: {instanceID: 15032}
+    - Class: 114
+      Script: {instanceID: 15044}
+    - Class: 114
+      Script: {instanceID: 21702}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -190,11 +211,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11206}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11230}
     - Class: 114
-      Script: {instanceID: 11632}
+      Script: {instanceID: 11630}
     - Class: 114
-      Script: {instanceID: 11646}
+      Script: {instanceID: 11644}
+    - Class: 114
+      Script: {instanceID: 11848}
+    - Class: 114
+      Script: {instanceID: 12048}
     - Class: 114
       Script: {instanceID: 12238}
     - Class: 114
@@ -202,15 +227,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13006}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 13044}
     - Class: 114
-      Script: {instanceID: 13428}
+      Script: {instanceID: 13212}
     - Class: 114
-      Script: {instanceID: 14204}
+      Script: {instanceID: 13268}
     - Class: 114
-      Script: {instanceID: 14944}
+      Script: {instanceID: 13422}
     - Class: 114
-      Script: {instanceID: 81820}
+      Script: {instanceID: 13434}
+    - Class: 114
+      Script: {instanceID: 13716}
+    - Class: 114
+      Script: {instanceID: 14212}
+    - Class: 114
+      Script: {instanceID: 14952}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -392,6 +423,12 @@ ScriptsOnlyBuild:
     className: NetworkTransform
   - hash:
       serializedVersion: 2
+      Hash: 67187ab56a9d7c605353dd2790f03b60
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TalkCargo
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -500,7 +537,7 @@ ScriptsOnlyBuild:
     className: workGageController
   - hash:
       serializedVersion: 2
-      Hash: f1f5e37c037fab5e09fa41389060eb4c
+      Hash: 0302bc19c990c3703e2152b41dd934fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: WorkController
@@ -602,7 +639,7 @@ ScriptsOnlyBuild:
     className: NetworkTransformVisualizer
   - hash:
       serializedVersion: 2
-      Hash: 9ab1c2302c5b0b27ff5b017f36ad8ac4
+      Hash: 64f661f12ffd8174f32de5b3de1f59cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CompanyMaster
@@ -632,7 +669,7 @@ ScriptsOnlyBuild:
     className: SpriteSkinEntity
   - hash:
       serializedVersion: 2
-      Hash: 4864f9c2680910b2c63ade922ae4be5c
+      Hash: 27a2634ac488d19ddd93ff4ea6b92b10
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TitlePopupButton
@@ -648,6 +685,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Analytics.Editor.dll
     namespaceName: UnityEditor.Analytics
     className: AnalyticsEventTrackerEditor
+  - hash:
+      serializedVersion: 2
+      Hash: 2fb38287d45986ce6502c1cccfbfaf40
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MoveScean
   - hash:
       serializedVersion: 2
       Hash: 21e871d89bbce53c038fc75ad1b7c7f3
@@ -668,7 +711,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 09edd5f0c80255e64475b81e7953378f
+      Hash: a947706652470c56ba517f76508eaed0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SlaveListManager
@@ -692,6 +735,12 @@ ScriptsOnlyBuild:
     className: Placeholder
   - hash:
       serializedVersion: 2
+      Hash: afa33f13e3f94d17e7b691c9b63bed11
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemBox
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -704,7 +753,13 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 50c9a814aea1c47807b123af26879239
+      Hash: 32188b2499082a51dcfc51ab3157bce3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WorkBtn
+  - hash:
+      serializedVersion: 2
+      Hash: 18df7b989c6120e14c649d416359380e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SlavePopupOpener
@@ -776,6 +831,12 @@ ScriptsOnlyBuild:
     className: NetworkMigrationManager
   - hash:
       serializedVersion: 2
+      Hash: 94d62cb4105e233dff80b42d641487d4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemBoxManager
+  - hash:
+      serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -836,7 +897,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: a2f1529eae3145e5b6ba02b62cbd9101
+      Hash: 281a7c1b412add980caf33bdd199209c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMoneySystem
@@ -1010,6 +1071,12 @@ ScriptsOnlyBuild:
     className: CoroutineExecutor
   - hash:
       serializedVersion: 2
+      Hash: da91632b596fe35b3ecfd1e0b7e9139c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemsMaster
+  - hash:
+      serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1028,10 +1095,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 2fb38287d45986ce6502c1cccfbfaf40
+      Hash: fca4f3b2fcdcce65a05657296be4dbff
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MoveScean
+    className: TitleManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/OpeningScean.unity

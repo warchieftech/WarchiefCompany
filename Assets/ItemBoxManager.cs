@@ -44,8 +44,11 @@ public class ItemBoxManager : MonoBehaviour
             itemCargo.GetComponent<ItemBox>().comment = mainSystem.Items[i].comment;
             itemCargo.GetComponent<ItemBox>().price = mainSystem.Items[i].cnt;
             itemCargo.GetComponent<ItemBox>().img = mainSystem.Items[i].img;
-            itemCargo.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { master.SetId(mainSystem.Items[temp].id); });
-            itemCargo.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { master.UseItem(mainSystem.Items[temp].id); });
+            if(i != 0)
+            {
+                itemCargo.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { master.SetId(mainSystem.Items[temp].id); });
+                itemCargo.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(delegate { master.UseItem(mainSystem.Items[temp].id); });
+            }
             itemCargo.GetComponent<ItemBox>().UpdateItem();
             itemCargo.transform.SetParent(inventory.transform);
 

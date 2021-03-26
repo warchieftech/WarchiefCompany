@@ -91,6 +91,7 @@
     <Compile Include="Assets\Script\WorkPopupManager.cs" />
     <Compile Include="Assets\SlaveList.cs" />
     <Compile Include="Assets\TalkCargo.cs" />
+    <Compile Include="Assets\TitleManager.cs" />
     <Compile Include="Assets\WorkBtn.cs" />
     <Compile Include="Assets\workGageController.cs" />
     <Reference Include="UnityEngine">
@@ -734,6 +735,9 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
