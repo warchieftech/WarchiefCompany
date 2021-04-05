@@ -22,17 +22,11 @@ public class SlavePopupManager : MonoBehaviour
     public Image loyalbar;
     public Text loyalText;
     public Text pay;
+    public int pos;
 
-    public void SlaveSetting(string key)
+    public void SlaveSetting(int key)
     {
-        foreach(Slave s in system.Slaves)
-        {
-            if(s.key == key)
-            {
-                slave = s;
-            }
-
-        }
+        slave = system.Slaves[key];
     }
 
     void Start()
@@ -49,6 +43,21 @@ public class SlavePopupManager : MonoBehaviour
     }
     public void Status()
     {
+        try
+        {
+            if (system.Titles[slave.titleKey - 5000].personalTitle)
+            {
+                title.transform.parent.GetComponent<Button>().enabled = false;
+            }
+            else
+            {
+                title.transform.parent.GetComponent<Button>().enabled = true;
+            }
+        }
+        catch (System.Exception e)
+        {
+
+        }
         title.text = slave.title;
         name.text = slave.name;
         face.sprite = Resources.Load<Sprite>("Character/img/" + slave.key);
@@ -64,7 +73,7 @@ public class SlavePopupManager : MonoBehaviour
     }
     public void TitlePopupBtn()
     {
-        TitlePopup.GetComponent<TitlePopupObj>().slaveKey = slave.key;
+        TitlePopup.GetComponent<TitlePopupObj>().slavePos = pos;
         TitleList.GetComponent<Canvas>().enabled = true;
     }
 }

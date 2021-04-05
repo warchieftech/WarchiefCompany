@@ -28,4 +28,15 @@ public class Work
 public class WorkManager : MonoBehaviour
 {
     public List<Work> work;
+    public GameObject contents;
+    private GameObject newWork;
+
+    private void Start()
+    {
+        foreach (Work w in work)
+        {
+            newWork = Instantiate(Resources.Load("Character/NewWork")) as GameObject;
+            newWork.transform.SetParent(contents.transform);
+        }
+    }
 }

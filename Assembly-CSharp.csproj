@@ -64,36 +64,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CompanyMaster.cs" />
-    <Compile Include="Assets\DateManager.cs" />
-    <Compile Include="Assets\GatchaManager.cs" />
-    <Compile Include="Assets\GatchaPlayManager.cs" />
-    <Compile Include="Assets\ItemBox.cs" />
-    <Compile Include="Assets\ItemBoxManager.cs" />
-    <Compile Include="Assets\ItemsMaster.cs" />
-    <Compile Include="Assets\MoveScean.cs" />
     <Compile Include="Assets\Script\ButtonAction.cs" />
+    <Compile Include="Assets\Script\CompanyMaster.cs" />
+    <Compile Include="Assets\Script\DateManager.cs" />
+    <Compile Include="Assets\Script\EventManager.cs" />
+    <Compile Include="Assets\Script\GatchaManager.cs" />
+    <Compile Include="Assets\Script\GatchaPlayManager.cs" />
+    <Compile Include="Assets\Script\ItemBox.cs" />
+    <Compile Include="Assets\Script\ItemBoxManager.cs" />
+    <Compile Include="Assets\Script\ItemsMaster.cs" />
     <Compile Include="Assets\Script\MainMoneySystem.cs" />
+    <Compile Include="Assets\Script\MoveScean.cs" />
     <Compile Include="Assets\Script\NoyeTest.cs" />
     <Compile Include="Assets\Script\SlaveItem.cs" />
+    <Compile Include="Assets\Script\SlaveList.cs" />
     <Compile Include="Assets\Script\SlaveListManager.cs" />
     <Compile Include="Assets\Script\SlaveManager.cs" />
     <Compile Include="Assets\Script\SlavePopupManager.cs" />
     <Compile Include="Assets\Script\SlavePopupOpener.cs" />
     <Compile Include="Assets\Script\StarPoint.cs" />
     <Compile Include="Assets\Script\TabPage.cs" />
+    <Compile Include="Assets\Script\TalkCargo.cs" />
+    <Compile Include="Assets\Script\TitleManager.cs" />
     <Compile Include="Assets\Script\TitlePopup.cs" />
     <Compile Include="Assets\Script\TitlePopupButton.cs" />
     <Compile Include="Assets\Script\TitlePopupObj.cs" />
     <Compile Include="Assets\Script\TitleSwitch.cs" />
+    <Compile Include="Assets\Script\WorkBtn.cs" />
     <Compile Include="Assets\Script\WorkController.cs" />
     <Compile Include="Assets\Script\WorkManager.cs" />
     <Compile Include="Assets\Script\WorkPopupManager.cs" />
-    <Compile Include="Assets\SlaveList.cs" />
-    <Compile Include="Assets\TalkCargo.cs" />
-    <Compile Include="Assets\TitleManager.cs" />
-    <Compile Include="Assets\WorkBtn.cs" />
-    <Compile Include="Assets\workGageController.cs" />
+    <Compile Include="Assets\Script\workGageController.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -691,6 +692,9 @@
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
@@ -735,9 +739,6 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/ScriptAssemblies/Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

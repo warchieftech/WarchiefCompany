@@ -8,8 +8,14 @@ public class TitleSwitch : MonoBehaviour
     {
         switch (s.titleKey)
         {
-            case 5003:
+            case 5000:
+                s.loyalty = s.loyaltyBase + 10;
+                break;
+            case 5001:
                 s.loyalty = s.loyaltyBase + 20;
+                break;
+            case 5002:
+                s.runAngle = false;
                 break;
         }
     }

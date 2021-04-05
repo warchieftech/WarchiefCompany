@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class TitlePopupButton : MonoBehaviour
 {
     public int key;
+    public bool personalTitle;
     public Image titleImg;
     public Text Name;
     [TextArea]
     public string Content;
 
-    public string slaveKey;
+    public int slaveKey;
     private TitlePopupObj popup;
     private MainMoneySystem mainSystem;
     private void Awake()
@@ -21,8 +22,9 @@ public class TitlePopupButton : MonoBehaviour
     }
     public void OnPopup()
     {
-        slaveKey = popup.slaveKey;
+        slaveKey = popup.slavePos;
         popup.titleKey = this.key;
+        popup.personalTitle = this.personalTitle;
         popup.Img.sprite = this.titleImg.sprite;
         popup.Name.text = this.Name.text;
         popup.Content.text = this.Content;

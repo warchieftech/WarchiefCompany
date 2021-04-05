@@ -19,11 +19,12 @@ public class SlavePopupOpener : MonoBehaviour
 
     public void OpenPopup()
     {
-        popupManager.SlaveSetting(key);
+        popupManager.pos = transform.GetSiblingIndex();
+        popupManager.SlaveSetting(transform.GetSiblingIndex());
         popup.enabled = true;
     }
     public void SelectSlave()
     {
-        itemsMaster.SelectSlave(key);
+        itemsMaster.SelectSlave(transform.GetSiblingIndex());
     }
 }

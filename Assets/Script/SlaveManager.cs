@@ -7,6 +7,7 @@ using UnityEngine;
 public class Slave
 {
     public string key;
+    public bool runAngle = true;
     public int star;
     public string name;
     public int maxHealth;

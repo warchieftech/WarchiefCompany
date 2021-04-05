@@ -96,4 +96,9 @@ public class WorkController : MonoBehaviour
         newWorkPopupManager.stars.StarUpdate();
         newPopup.GetComponent<Canvas>().enabled = true;
     }
+    public void CloseWorkPopup()
+    {
+        WorkTab.transform.GetChild(gameSystem.getWorkCnt).GetComponent<Button>().enabled = true;
+        WorkTab.transform.GetChild(gameSystem.getWorkCnt).GetChild(2).gameObject.SetActive(false);
+    }
 }

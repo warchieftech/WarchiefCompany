@@ -26,22 +26,16 @@ using UnityEngine.UI;
 
 
     private Company cop;
-    private int Money = 5000000;
+    private double Money = 500000000;
     private int workPower;
     private TitleSwitch t;
     private bool payChecker = false;
 
-/*    void Awake()
-    {
-        talkCargo = GameObject.FindWithTag("EventManager").GetComponent<TalkCargo>();
-        slaveListManager = GameObject.FindWithTag("SlaveList").GetComponent<SlaveListManager>();
-        workController = GameObject.FindWithTag("WorkController").GetComponent<WorkController>();
-        companyMaster = GameObject.FindWithTag("CompanyPopup").GetComponent<CompanyMaster>();
-        gatchaManager = GameObject.FindWithTag("GatchaManager").GetComponent<GatchaManager>();
-    }*/
+    private List<int> stressSlave;
+    private int ran;
+
     void Start()
     {
-        //maxSlaves = 3;
         cop = companyMaster.company;
         t = transform.GetComponent<TitleSwitch>();
 
@@ -60,10 +54,12 @@ using UnityEngine.UI;
             Calc();
             StatusUpdate();
             SlavePowerSetter();
+            EventProcess();
             Working();
         }
     }
 
+    // 돈계산
     void Calc()
     {
         cop.copPayment = 0;
@@ -96,17 +92,41 @@ using UnityEngine.UI;
         Money -= cop.elecPay;
         copMoney.GetComponent<Text>().text = Money.ToString();
     }
-
-    void StatusUpdate()
+    void EventProcess()
     {
-        foreach(Slave s in Slaves)
+        ran = UnityEngine.Random.Range(0, 51);
+        Debug.Log(ran);
+        foreach (int i in stressSlave)
         {
-            s.stress = s.stressBase;
-            s.loyalty = s.loyaltyBase;
-            t.TitleStatus(s);
+            if (Slaves[i].runAngle)
+            {
+                switch (ran)
+                {
+                    default:
+                        break;
+                    case 50:
+                        ErrorPopup(Slaves[i].name + "은(는) 지능이 상승했습니다!!");
+                        RemoveSlave(i);
+                        break;
+                }
+            }
         }
     }
 
+    void StatusUpdate()
+    {
+        stressSlave = new List<int> { };
+        for (int i = 0; i < Slaves.Count; i++)
+        {
+            Slaves[i].stress = Slaves[i].stressBase;
+            Slaves[i].loyalty = Slaves[i].loyaltyBase;
+            if (Slaves[i].stress > 80 && Slaves[i].health < 20)
+            {
+                stressSlave.Add(i);
+            }
+            t.TitleStatus(Slaves[i]);
+        }
+    }
     void SlavePowerSetter()
     {
         foreach(Slave s in Slaves)
@@ -114,7 +134,6 @@ using UnityEngine.UI;
             s.workPower = (int)(s.workPowerBase + (s.workPowerBase * (s.loyalty / 100)) - (s.workPowerBase * (s.stress / 100)));
         }
     }
-
     void Working()
     {
         if(Works.Count > 0 && dateManager.workDay)
@@ -151,18 +170,15 @@ using UnityEngine.UI;
                 if (s.stressBase > 100) s.stressBase = 100;
                 else if (s.stressBase < 0) s.stressBase = 0;
             }
-
         }
-
     }
-
     public void useText(int id)
     {
-        StartCoroutine(talkCargo.InnerText(id));
+        talkCargo.ConverText(id);
     }
     public void useEventText(int id)
     {
-        StartCoroutine(talkCargo.InnerEventText(id));
+        talkCargo.ConverEvnetText(id);
     }
     public void AddMoney(int temp)
     {
@@ -176,12 +192,22 @@ using UnityEngine.UI;
     public void GetWork()
     {
         Works.Add(workQuest.GetComponent<WorkManager>().work[getWorkCnt]);
+        WorkTab.transform.GetChild(1).GetChild(0).GetChild(getWorkCnt).GetComponent<Button>().enabled = false;
         Money += workQuest.GetComponent<WorkManager>().work[getWorkCnt].downPay;
+    }
+    public void CloseWork()
+    {
+        workController.CloseWorkPopup();
     }
     public void AddSlave(string key, int star, string name, int health, int stress, int loyalty, int pay, int workPower)
     {
         Slave slaveTemp = new Slave(key, star, name, health, stress, loyalty, pay, workPower);
         Slaves.Add(slaveTemp);
+        slaveListManager.UpdateList(Slaves);
+    }
+    public void RemoveSlave(int cnt)
+    {
+        Slaves.Remove(Slaves[cnt]);
         slaveListManager.UpdateList(Slaves);
     }
     public void UpdateSlave()
