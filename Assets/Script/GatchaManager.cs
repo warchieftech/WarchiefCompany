@@ -21,21 +21,21 @@ public class GatchaManager : MonoBehaviour
     private int ran;
     private int charRan;
 
-    [Header("Nomal")]
+    [Header("Nomal Setting")]
     public int nN;
     public int nR;
     public int nSR;
     public int nU;
     public int nE;
-    [Header("Premium")]
+    [Header("Premium Setting")]
     public int pN;
     public int pR;
     public int pSR;
     public int pU;
     public int pE;
 
-    private Hashtable normalTable = new Hashtable();
-    private Hashtable premiumTable = new Hashtable();
+    public Hashtable normalTable = new Hashtable();
+    public Hashtable premiumTable = new Hashtable();
 
     private void Start()
     {
@@ -111,11 +111,11 @@ public class GatchaManager : MonoBehaviour
             }
         }
     }
-    public void StartGatcha()
+    public void StartGatcha(int tableCnt)
     {
         for (int i = 0; i < 3; i++)
         {
-            int temp = Random.Range(0, normalTable.Count);
+            int temp = Random.Range(0, tableCnt);
 
             if (temp < nN)
             {
@@ -137,96 +137,10 @@ public class GatchaManager : MonoBehaviour
             {
                 getChara(epic, i);
             }
-/*
-            ran = Random.Range(1, 11);
-            switch (ran)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                    getChara(normal, i);
-                    break;
-                case 7:
-                case 8:
-                case 9:
-                    getChara(rare, i);
-                    break;
-                case 10:
-                    getChara(superRare, i);
-                    break;
-            }*/
         }
         AnimationObj.SetActive(true);
         Invoke("OpenPopup", 1);
     }
-
-    public void StartPremiumGatcha()
-    {
-        for(int i = 0; i < 3; i++)
-        {
-            int temp = Random.Range(0, premiumTable.Count);
-            Debug.Log(temp + "개");
-
-            if (temp < pN)
-            {
-                getChara(normal, i);
-            }
-            else if (temp < pR)
-            {
-                getChara(rare, i);
-            }
-            else if (temp < pSR)
-            {
-                getChara(superRare, i);
-            }
-            else if (temp < pU)
-            {
-                getChara(unique, i);
-            }
-            else
-            {
-                getChara(epic, i);
-            }
-            /*ran = Random.Range(1, 17);
-
-            premiumTable.Keys.
-            switch (ran)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                    getChara(normal, i);
-                    break;
-                case 7:
-                case 8:
-                case 9:
-                case 10:
-                    getChara(rare, i);
-                    break;
-                case 11:
-                case 12:
-                case 13:
-                    getChara(superRare, i);
-                    break;
-                case 14:
-                case 15:
-                    getChara(unique, i);
-                    break;
-                case 16:
-                    getChara(epic, i);
-                    break;
-            }*/
-        }
-        AnimationObj.SetActive(true);
-        Invoke("OpenPopup", 1);
-    }
-
     public void getChara(List<string> star, int index)
     {
         AnimationObj.SetActive(false);

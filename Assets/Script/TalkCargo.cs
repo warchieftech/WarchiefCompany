@@ -6,12 +6,19 @@ using UnityEngine.UI;
 [System.Serializable]
 public class TalkData
 {
+    [Header("이벤트 발생하는 지점 체크")]
     public bool eventCheck;
+    [Header("대사의 끝부분 체크")]
     public bool endCheck;
-    public int eventId;
+    [Header("긍정적 분기시 넘어갈 위치 값")]
+    public int eventCnt;
+    [Header("이벤트의 마지막에 긍정/부정적 체크")]
     public bool eventLine;
+    [Header("고정 NPC의 경우 표시될 초상화")]
     public Sprite img;
+    [Header("고정 NPC의 경우 표시될 이름 (공백시 랜덤이벤트)")]
     public string name;
+    [Header("대사")]
     [TextArea]
     public string talk;
 }
@@ -32,6 +39,7 @@ public class TalkCargo : MonoBehaviour
     public Sprite slaveImg;
     public string slaveName;
 
+    private int eventBuff;
     private int slaveCnt;
     private int i;
     private string t;
@@ -43,6 +51,10 @@ public class TalkCargo : MonoBehaviour
     public GameObject normalBtn;
     public GameObject eventBtn;
 
+    public void SlaveSetting(int cnt)
+    {
+        this.slaveCnt = cnt;
+    }
     public void ConverText(int id)
     {
         i = 0;
@@ -56,21 +68,21 @@ public class TalkCargo : MonoBehaviour
     public void ConverEvnetText(int id)
     {
         i = 0;
-        //StartCoroutine(InnerEventText(id, this.slaveCnt));
-        StartCoroutine(InnerEventText(id, 0));
+        StartCoroutine(InnerEventText(id, this.slaveCnt));
+        //StartCoroutine(InnerEventText(id, 0));
     }
     public void ConverEventText(int id, int cnt)
     {
         i = cnt;
-        //StartCoroutine(InnerEventText(id, this.slaveCnt));
-        StartCoroutine(InnerEventText(id, 0));
+        StartCoroutine(InnerEventText(id, this.slaveCnt));
+        //StartCoroutine(InnerEventText(id, 0));
     }
     public void Restart(bool branch)
     {
         if (branch)
         {
-            i++;
-            ConverText(this.id, i);
+            i = eventBuff;
+            ConverText(this.id, eventBuff);
         }
         else
         {
@@ -81,8 +93,8 @@ public class TalkCargo : MonoBehaviour
     {
         if (branch)
         {
-            i++;
-            ConverEventText(this.id, i);
+            i = eventBuff;
+            ConverEventText(this.id, eventBuff);
         }
         else
         {
@@ -119,6 +131,7 @@ public class TalkCargo : MonoBehaviour
             {
                 this.id = id;
                 this.i = i + 1;
+                this.eventBuff = talkDatas[id].talks[i].eventCnt;
                 OpenNoBtn();
                 break;
             }
@@ -126,10 +139,15 @@ public class TalkCargo : MonoBehaviour
             if (talkDatas[id].talks[i].endCheck)
             {
                 EventPlay(id, talkDatas[id].talks[i].eventLine);
+                mainMoneySystem.RestartSystem();
                 break;
             }
             i++;
-            if (i == talkDatas[id].talks.Count) break;
+            if (i == talkDatas[id].talks.Count)
+            {
+                mainMoneySystem.RestartSystem();
+                break;
+            }
         }
     }
     public IEnumerator InnerEventText(int id, int slaveCnt)
@@ -174,10 +192,15 @@ public class TalkCargo : MonoBehaviour
             if (talkDatas[id].talks[i].endCheck)
             {
                 EventPlay(id, talkDatas[id].talks[i].eventLine ,slaveCnt);
+                mainMoneySystem.RestartSystem();
                 break;
             }
             i++;
-            if (i == talkDatas[id].talks.Count) break;
+            if (i == talkDatas[id].talks.Count)
+            {
+                mainMoneySystem.RestartSystem();
+                break;
+            }
         }
     }
     public void EventPlay(int id, bool check)

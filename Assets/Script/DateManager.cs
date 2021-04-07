@@ -16,6 +16,7 @@ public class DateManager : MonoBehaviour
     public int week = 0;
     public bool workDay;    //true = 평일 / false = 휴일
 
+    private Coroutine dateSystem;
     private DateTime dateTime;
     private CultureInfo cultures;
     private string date;
@@ -23,9 +24,16 @@ public class DateManager : MonoBehaviour
     void Start()
     {
         cultures = CultureInfo.CreateSpecificCulture("ko-KR");
+        dateSystem = StartCoroutine(DateSystem());
+    }
+    public void RestartDate()
+    {
         StartCoroutine(DateSystem());
     }
-
+    public void PauseDate()
+    {
+        StopCoroutine(dateSystem);
+    }
     IEnumerator DateSystem()
     {
         while (true)

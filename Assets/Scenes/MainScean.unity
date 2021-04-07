@@ -3327,6 +3327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e2211d16fa7754aa5bbdd364eedc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  money: 2237500
+  btn_0: 0
+  rmoney: 1000000
+  btn_1: 0
   talkCargo: {fileID: 405908904}
   gatchaManager: {fileID: 1716562525}
   slaveListManager: {fileID: 1292422676}
@@ -5979,6 +5983,7 @@ GameObject:
   - component: {fileID: 405908902}
   - component: {fileID: 405908904}
   - component: {fileID: 405908905}
+  - component: {fileID: 405908906}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: EventManager
@@ -6051,7 +6056,7 @@ MonoBehaviour:
   - talks:
     - eventCheck: 0
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: 3018fccd5fe9eaa4f80e27e00930eff0, type: 3}
       name: "\uC544\uBC84\uC9C0"
@@ -6059,7 +6064,7 @@ MonoBehaviour:
         \uBC88\uB4EF\uD558\uC9C0 \uC54A\uB2C8?"
     - eventCheck: 0
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: 3018fccd5fe9eaa4f80e27e00930eff0, type: 3}
       name: "\uC544\uBC84\uC9C0"
@@ -6068,21 +6073,21 @@ MonoBehaviour:
         \uD558\uB9C8."
     - eventCheck: 1
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: 3018fccd5fe9eaa4f80e27e00930eff0, type: 3}
       name: "\uC544\uBC84\uC9C0"
       talk: "\uC774\uAC83\uC740 \uC5C5\uBB34\uBC84\uD2BC\uC774\uB2E4.\n\uB20C\uB7EC\uBCF4\uB824\uBB34\uB098."
     - eventCheck: 0
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: e972b18b6db119e44b004a8b58c7d65e, type: 3}
       name: 
       talk: "\uACE0\uB9C8\uC6CC\uC694 \uC544\uBC84\uC9C0!"
     - eventCheck: 0
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: e972b18b6db119e44b004a8b58c7d65e, type: 3}
       name: 
@@ -6090,36 +6095,43 @@ MonoBehaviour:
   - talks:
     - eventCheck: 0
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: 3018fccd5fe9eaa4f80e27e00930eff0, type: 3}
       name: 
       talk: "\uC0AC\uC7A5\uB2D8, \uB4DC\uB9B4 \uB9D0\uC500\uC774 \uC788\uC2B5\uB2C8\uB2E4."
     - eventCheck: 0
       endCheck: 0
-      eventId: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: 3018fccd5fe9eaa4f80e27e00930eff0, type: 3}
       name: "\uC0AC\uC7A5\uB2D8"
       talk: "\uBB54\uAC00\uC694?"
     - eventCheck: 1
       endCheck: 0
-      eventId: 0
+      eventCnt: 5
       eventLine: 0
       img: {fileID: 21300000, guid: 3018fccd5fe9eaa4f80e27e00930eff0, type: 3}
       name: 
       talk: "\uC6D4\uAE09\uC744 \uC778\uC0C1\uD574\uC8FC\uC9C0 \uC54A\uC73C\uBA74
         \uD68C\uC0AC\uB97C\n\uB54C\uB824\uCE58\uACA0\uC2B5\uB2C8\uB2E4."
     - eventCheck: 0
-      endCheck: 1
-      eventId: 0
+      endCheck: 0
+      eventCnt: 0
       eventLine: 0
       img: {fileID: 21300000, guid: e972b18b6db119e44b004a8b58c7d65e, type: 3}
       name: "\uC0AC\uC7A5\uB2D8"
       talk: "\uC2EB\uC740\uB808\uD6C4"
     - eventCheck: 0
       endCheck: 1
-      eventId: 0
+      eventCnt: 0
+      eventLine: 0
+      img: {fileID: 21300000, guid: e972b18b6db119e44b004a8b58c7d65e, type: 3}
+      name: 
+      talk: "\uC774\uB534\uAC8C \uD68C\uC0AC\uB0D0"
+    - eventCheck: 0
+      endCheck: 1
+      eventCnt: 0
       eventLine: 1
       img: {fileID: 21300000, guid: e972b18b6db119e44b004a8b58c7d65e, type: 3}
       name: "\uC0AC\uC7A5\uB2D8"
@@ -6140,6 +6152,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainSystem: {fileID: 244546637}
+--- !u!114 &405908906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405908901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdf44e40aff27d49ac0dfcf156b9bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainSystem: {fileID: 244546637}
+  talkSystem: {fileID: 405908904}
+  dateManager: {fileID: 1162932579}
+  year: 0
+  month: 0
+  day: 0
 --- !u!1 &409115201
 GameObject:
   m_ObjectHideFlags: 0
@@ -14411,8 +14441,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 244546637}
-        m_MethodName: useEventText
+      - m_Target: {fileID: 405908906}
+        m_MethodName: RandomSlaveEvent
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DayEventsManager.cs" />
     <Compile Include="Assets\Script\ButtonAction.cs" />
     <Compile Include="Assets\Script\CompanyMaster.cs" />
     <Compile Include="Assets\Script\DateManager.cs" />
@@ -76,6 +77,14 @@
     <Compile Include="Assets\Script\MainMoneySystem.cs" />
     <Compile Include="Assets\Script\MoveScean.cs" />
     <Compile Include="Assets\Script\NoyeTest.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\Attributes.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\ButtonAttributeDrawer.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\FieldDescriptionAttributeDrawer.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\IncrementableAttribute.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\IncrementableAttributeDrawer.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\PopUpAttributeDrawer.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\SeparatorAttributeDrawer.cs" />
+    <Compile Include="Assets\Script\PropertyDrawers\TitleAttributeDrawer.cs" />
     <Compile Include="Assets\Script\SlaveItem.cs" />
     <Compile Include="Assets\Script\SlaveList.cs" />
     <Compile Include="Assets\Script\SlaveListManager.cs" />

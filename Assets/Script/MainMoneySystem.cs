@@ -3,15 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DynamicLight2D;
 
-    public class MainMoneySystem : MonoBehaviour
+public class MainMoneySystem : MonoBehaviour
 {
+    public static MainMoneySystem instance;
+    [Title("Warchief Main System", 20f, 20)]
+    [Space(25f)]
+    [Range(100000, 10000000)] public int money = 1000000;
+    [Button("Add Money", "MainMoneySystem", "AddMoneyTest")] public bool btn_0;
+    [Range(100000, 10000000)] public int rmoney = 1000000;
+    [Button("Remove Money", "MainMoneySystem", "RemoveMoneyTest")] public bool btn_1;
+    static void AddMoneyTest()
+    {
+        instance.AddMoney(instance.money);
+    }
+    static void RemoveMoneyTest()
+    {
+        instance.RemoveMoney(instance.rmoney);
+    }
+
+    [Header("Controllers")]
     public TalkCargo talkCargo;
     public GatchaManager gatchaManager;
     public SlaveListManager slaveListManager;
     public CompanyMaster companyMaster;
     public WorkController workController;
 
+    [Header("Settings")]
     public GameObject copMoney;
     public DateManager dateManager;
     public int maxSlaves;
@@ -24,7 +43,7 @@ using UnityEngine.UI;
     public GameObject errorPopup;
     public int getWorkCnt;
 
-
+    private Coroutine system;
     private Company cop;
     private double Money = 500000000;
     private int workPower;
@@ -34,6 +53,10 @@ using UnityEngine.UI;
     private List<int> stressSlave;
     private int ran;
 
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
     void Start()
     {
         cop = companyMaster.company;
@@ -41,9 +64,18 @@ using UnityEngine.UI;
 
         //AddSlave("DragonLee", 5, "이용", 100, 50, 50, 50000, 80);
         //AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
+        system = StartCoroutine(CostManager());
+    }
+    public void RestartSystem()
+    {
+        dateManager.RestartDate();
         StartCoroutine(CostManager());
     }
-
+    public void PauseSystem()
+    {
+        dateManager.PauseDate();
+        StopCoroutine(system);
+    }
     IEnumerator CostManager()
     {
         UpdateSlave();
@@ -245,7 +277,7 @@ using UnityEngine.UI;
             if (Money > 500000)
             {
                 Money -= 500000;
-                gatchaManager.StartGatcha();
+                gatchaManager.StartGatcha(gatchaManager.normalTable.Count);
             }
             else
             {
@@ -264,7 +296,7 @@ using UnityEngine.UI;
             if (Money > 2000000)
             {
                 Money -= 2000000;
-                gatchaManager.StartPremiumGatcha();
+                gatchaManager.StartGatcha(gatchaManager.premiumTable.Count);
             }
             else
             {
