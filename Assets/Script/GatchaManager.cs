@@ -113,29 +113,60 @@ public class GatchaManager : MonoBehaviour
     }
     public void StartGatcha(int tableCnt)
     {
-        for (int i = 0; i < 3; i++)
+        if(tableCnt == normalTable.Count)
         {
-            int temp = Random.Range(0, tableCnt);
+            for (int i = 0; i < 3; i++)
+            {
+                int temp = Random.Range(0, tableCnt);
 
-            if (temp < nN)
-            {
-                getChara(normal, i);
+                if (temp < nN)
+                {
+                    getChara(normal, i);
+                }
+                else if (temp < nR)
+                {
+                    getChara(rare, i);
+                }
+                else if (temp < nSR)
+                {
+                    getChara(superRare, i);
+                }
+                else if (temp < nU)
+                {
+                    getChara(unique, i);
+                }
+                else
+                {
+                    getChara(epic, i);
+                }
             }
-            else if (temp < nR)
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++)
             {
-                getChara(rare, i);
-            }
-            else if (temp < nSR)
-            {
-                getChara(superRare, i);
-            }
-            else if (temp < nU)
-            {
-                getChara(unique, i);
-            }
-            else
-            {
-                getChara(epic, i);
+                int temp = Random.Range(0, tableCnt);
+
+                if (temp < pN)
+                {
+                    getChara(normal, i);
+                }
+                else if (temp < pR)
+                {
+                    getChara(rare, i);
+                }
+                else if (temp < pSR)
+                {
+                    getChara(superRare, i);
+                }
+                else if (temp < pU)
+                {
+                    getChara(unique, i);
+                }
+                else
+                {
+                    getChara(epic, i);
+                }
             }
         }
         AnimationObj.SetActive(true);
