@@ -1,6 +1,10 @@
 ScriptsOnlyBuild:
   usedScripts:
+    Assembly-CSharp-firstpass.dll:
+    - UnityEngine.Purchasing.IAPButton
     Assembly-CSharp.dll:
+    - AdmobAdManager
+    - CashItemsMaster
     - CompanyMaster
     - DateManager
     - DayEventsManager
@@ -30,6 +34,11 @@ ScriptsOnlyBuild:
     - WorkManager
     - WorkPopupManager
     - workGageController
+    GoogleMobileAds.Editor.dll:
+    - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    - GoogleMobileAds.Editor.GoogleMobileAdsSettingsEditor
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -59,14 +68,19 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.ContentSizeFitter
+    - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
+    com.unity.multiplayer-hlapi.Runtime.dll:
+    - UnityEngine.Networking.NetworkCallbacks
   sceneClasses:
     Assets/Scenes/MainScean.unity:
     - Class: 1
@@ -138,6 +152,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13262}
     - Class: 114
+      Script: {instanceID: 13318}
+    - Class: 114
       Script: {instanceID: 13488}
     - Class: 114
       Script: {instanceID: 13900}
@@ -167,6 +183,14 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15124}
     - Class: 114
       Script: {instanceID: 15136}
+    - Class: 114
+      Script: {instanceID: 52474}
+    - Class: 114
+      Script: {instanceID: 68322}
+    - Class: 114
+      Script: {instanceID: 68324}
+    - Class: 114
+      Script: {instanceID: 157442}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -198,6 +222,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -217,6 +243,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11232}
     - Class: 114
+      Script: {instanceID: 11598}
+    - Class: 114
       Script: {instanceID: 11646}
     - Class: 114
       Script: {instanceID: 11660}
@@ -228,6 +256,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12266}
     - Class: 114
       Script: {instanceID: 12476}
+    - Class: 114
+      Script: {instanceID: 12928}
     - Class: 114
       Script: {instanceID: 13048}
     - Class: 114
@@ -243,7 +273,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14284}
     - Class: 114
+      Script: {instanceID: 15002}
+    - Class: 114
       Script: {instanceID: 15042}
+    - Class: 114
+      Script: {instanceID: 15068}
+    - Class: 114
+      Script: {instanceID: 156502}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -917,7 +953,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: a0f3746070a856c5a24333cb9d33b289
+      Hash: 6af20a4a7e837f26be6d1cc1aa34eac0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMoneySystem
@@ -1091,7 +1127,7 @@ ScriptsOnlyBuild:
     className: CoroutineExecutor
   - hash:
       serializedVersion: 2
-      Hash: 6ac58683a897ac3f75d640c6bfa80041
+      Hash: 86023253318246ef2a0ce6347089ad4e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ItemsMaster
@@ -1113,8 +1149,116 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Stores.dll
+    namespaceName: UnityEngine.Purchasing
+    className: AsyncWebUtil
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Stores.dll
+    namespaceName: UnityEngine.Purchasing.Extension
+    className: UnityUtil
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: ObfuscatorWindow
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: ProductCatalogEditor
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: RichEditorWindow
+  - hash:
+      serializedVersion: 2
+      Hash: cd0ecdca0166232906c6f2df9dddc3d3
+    assemblyName: Editor.dll
+    namespaceName: UnityEditor.Purchasing
+    className: UdpInstallInstructionsWindow
+  - hash:
+      serializedVersion: 2
+      Hash: ebd0fcfecda45cfd91320c470f790625
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: 
+    className: IAPDemoProductUI
+  - hash:
+      serializedVersion: 2
+      Hash: 8938bfdfe26c79d6858429a718a6d82a
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: UnityEngine.Purchasing
+    className: IAPButton
+  - hash:
+      serializedVersion: 2
+      Hash: 3bddfbf6938ea3f1a5e7b2933643730f
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: UnityEngine.Purchasing
+    className: IAPListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: UnityEngine.Purchasing
+    className: DemoInventory
+  - hash:
+      serializedVersion: 2
+      Hash: 08a4dc90eb8d405328ffd2b674587aba
+    assemblyName: Assembly-CSharp-firstpass.dll
+    namespaceName: 
+    className: IAPDemo
+  - hash:
+      serializedVersion: 2
+      Hash: 5f70dc083fb1f62555eb10033e83921b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CashItemsMaster
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.dll
+    namespaceName: 
+    className: Countdown
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.dll
+    namespaceName: 
+    className: ButtonBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 6fb512c6733e02f441372611e6f94f11
+    assemblyName: GoogleMobileAds.Editor.dll
+    namespaceName: GoogleMobileAds.Editor
+    className: GoogleMobileAdsSettings
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.dll
+    namespaceName: GoogleMobileAds.Common
+    className: MobileAdsEventExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.dll
+    namespaceName: 
+    className: DummyAdBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdmobAdManager
   platform: 13
   scenePathNames:
   - Assets/Scenes/OpeningScean.unity
   - Assets/Scenes/MainScean.unity
-  playerPath: C:/Users/yyy41/Documents/1.0verBuild.apk
+  playerPath: C:/Users/yyy41/Documents/1.22averBuild.apk

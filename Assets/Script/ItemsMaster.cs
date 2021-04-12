@@ -8,6 +8,8 @@ public class Item
 {
     [Header("true : 선택형 / false : 즉시사용")]
     public bool type;
+    [Header("true : 상점 미등록 / false : 상점등록")]
+    public bool shopCheck;
     public int id;
     public int cnt;
     public string name;
