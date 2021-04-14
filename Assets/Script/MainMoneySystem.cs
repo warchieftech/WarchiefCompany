@@ -29,10 +29,11 @@ public class MainMoneySystem : MonoBehaviour
     public SlaveListManager slaveListManager;
     public CompanyMaster companyMaster;
     public WorkController workController;
-
-    [Header("Settings")]
     public GameObject copMoney;
     public DateManager dateManager;
+
+    [Header("Settings")]
+    public Chief chief;
     public int maxSlaves;
     public List<Slave> Slaves;
     public List<Work> Works;
@@ -127,7 +128,6 @@ public class MainMoneySystem : MonoBehaviour
     void EventProcess()
     {
         ran = UnityEngine.Random.Range(0, 51);
-        Debug.Log(ran);
         foreach (int i in stressSlave)
         {
             if (Slaves[i].runAngle)

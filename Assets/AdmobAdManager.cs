@@ -4,7 +4,12 @@ using GoogleMobileAds.Api;
 
 public class AdmobAdManager : MonoBehaviour
 {
+    public MainMoneySystem mainSystem;
+
     private RewardedAd rewardedAd;
+    private BannerView banner;
+
+    private int eventId;
 
     public void Start()
     {
@@ -19,6 +24,11 @@ public class AdmobAdManager : MonoBehaviour
         MobileAds.Initialize(appId);
 
         this.RequestRewardedAd();
+        this.RequestBanner();
+        if (PlayerPrefs.GetInt("Admob") != 1)
+        {
+            ShowBanner();
+        }
     }
 
     // 보상형 광고
@@ -88,13 +98,20 @@ public class AdmobAdManager : MonoBehaviour
     {
         string type = args.Type;
         double amount = args.Amount;
-        MonoBehaviour.print(
-            "HandleRewardedAdRewarded event received for "
-                        + amount.ToString() + " " + type);
+
+        switch (eventId)
+        {
+            case 0:
+                mainSystem.Items[3].cnt++;
+                return;
+
+        }
+
     }
 
-    public void ShowRewardedAd()
+    public void ShowRewardedAd(int id)
     {
+        eventId = id;
         if (this.rewardedAd.IsLoaded())
         {
             this.rewardedAd.Show();
@@ -105,4 +122,68 @@ public class AdmobAdManager : MonoBehaviour
             RequestRewardedAd();
         }
     }
+
+
+    private void RequestBanner()
+    {
+#if UNITY_ANDROID
+        string AdUnitID = "ca-app-pub-3940256099942544/6300978111"; //테스트 아이디
+#else
+        string AdUnitID = "unDefind";
+#endif
+
+        banner = new BannerView(AdUnitID, AdSize.SmartBanner, AdPosition.Bottom);
+
+        // Called when an ad request has successfully loaded.
+        banner.OnAdLoaded += HandleOnAdLoaded_banner;
+        // Called when an ad request failed to load.
+        banner.OnAdFailedToLoad += HandleOnAdFailedToLoad_banner;
+        // Called when an ad is clicked.
+        banner.OnAdOpening += HandleOnAdOpened_banner;
+        // Called when the user returned from the app after an ad click.
+        banner.OnAdClosed += HandleOnAdClosed_banner;
+        // Called when the ad click caused the user to leave the application.
+        banner.OnAdLeavingApplication += HandleOnAdLeavingApplication_banner;
+
+        AdRequest request = new AdRequest.Builder().Build();
+
+        banner.LoadAd(request);
+    }
+
+    public void ShowBanner()
+    {
+        banner.Show();
+    }
+
+    public void HideBanner()
+    {
+        banner.Hide();
+    }
+
+    public void HandleOnAdLoaded_banner(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdLoaded event received_banner");
+    }
+
+    public void HandleOnAdFailedToLoad_banner(object sender, AdFailedToLoadEventArgs args)
+    {
+        MonoBehaviour.print("HandleFailedToReceiveAd_banner event received with message: "
+                            + args.Message);
+    }
+
+    public void HandleOnAdOpened_banner(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdOpened event received_banner");
+    }
+
+    public void HandleOnAdClosed_banner(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdClosed event received_banner");
+    }
+
+    public void HandleOnAdLeavingApplication_banner(object sender, EventArgs args)
+    {
+        MonoBehaviour.print("HandleAdLeavingApplication event received_banner");
+    }
+
 }

@@ -11,8 +11,8 @@ public class Work
     public string name;
     public int downPay;
     public int pay;
-    public int workPoint;
-    public int workCheckPoint;
+    public double workPoint;
+    public double workCheckPoint;
 
     public Work(string key, int star, string name, int downPay, int pay, int wp, int wcp)
     {

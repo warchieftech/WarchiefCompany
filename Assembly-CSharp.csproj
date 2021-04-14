@@ -65,9 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AdmobAdManager.cs" />
+    <Compile Include="Assets\BrokenObj.cs" />
+    <Compile Include="Assets\ClickerField.cs" />
+    <Compile Include="Assets\CodeTextPrintManager.cs" />
     <Compile Include="Assets\DayEventsManager.cs" />
     <Compile Include="Assets\Script\ButtonAction.cs" />
     <Compile Include="Assets\Script\CashItemsMaster.cs" />
+    <Compile Include="Assets\Script\Chief.cs" />
     <Compile Include="Assets\Script\CompanyMaster.cs" />
     <Compile Include="Assets\Script\DateManager.cs" />
     <Compile Include="Assets\Script\EventManager.cs" />
@@ -283,6 +287,33 @@
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Editor">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Purchasing.Common">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Stores">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="Apple">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
+    </Reference>
+    <Reference Include="AppleCore">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Apple/AppleCore.dll</HintPath>
+    </Reference>
+    <Reference Include="AppleMacos">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Apple/AppleMacos.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookStore">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Facebook/FacebookStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Security">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Security/live/Security.dll</HintPath>
+    </Reference>
+    <Reference Include="winrt">
+      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/PackageCache/com.unity.analytics@3.3.5/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -294,33 +325,6 @@
     </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Security">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Security/live/Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Stores">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Stores.dll</HintPath>
-    </Reference>
-    <Reference Include="AppleCore">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Apple/AppleCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Editor">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Purchasing.Common">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Purchasing.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="winrt">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
-    </Reference>
-    <Reference Include="FacebookStore">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Facebook/FacebookStore.dll</HintPath>
-    </Reference>
-    <Reference Include="Apple">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Apple/Apple.dll</HintPath>
-    </Reference>
-    <Reference Include="AppleMacos">
-      <HintPath>C:/Users/yyy41/Desktop/Project/Warchiefcop/Assets/Plugins/UnityPurchasing/Bin/Apple/AppleMacos.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.4f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
