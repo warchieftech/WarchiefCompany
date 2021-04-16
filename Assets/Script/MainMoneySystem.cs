@@ -24,6 +24,7 @@ public class MainMoneySystem : MonoBehaviour
     }
 
     [Header("Controllers")]
+    public GameSaveSystem gameSaveSystem;
     public TalkCargo talkCargo;
     public GatchaManager gatchaManager;
     public SlaveListManager slaveListManager;
@@ -31,6 +32,7 @@ public class MainMoneySystem : MonoBehaviour
     public WorkController workController;
     public GameObject copMoney;
     public DateManager dateManager;
+    public SkillMaster skillMaster;
 
     [Header("Settings")]
     public Chief chief;
@@ -62,10 +64,26 @@ public class MainMoneySystem : MonoBehaviour
     {
         cop = companyMaster.company;
         t = transform.GetComponent<TitleSwitch>();
+        SystemAllBoot();
 
+        skillMaster.UpdateAll();
         //AddSlave("DragonLee", 5, "이용", 100, 50, 50, 50000, 80);
         //AddSlave("SickYang", 5, "양현식", 100, 50, 50, 50000, 70);
         system = StartCoroutine(CostManager());
+    }
+    // 세이브 파일 불러오기 기능
+    private void SystemAllBoot()
+    {
+        skillMaster.Setup();
+        if(PlayerPrefs.GetInt("Load") == 1)
+        {
+            gameSaveSystem.Load();
+            PlayerPrefs.SetInt("Load", 0);
+        }
+        else
+        {
+
+        }
     }
     public void RestartSystem()
     {
@@ -123,7 +141,7 @@ public class MainMoneySystem : MonoBehaviour
             }
         }
         Money -= cop.elecPay;
-        copMoney.GetComponent<Text>().text = Money.ToString();
+        copMoney.GetComponent<Text>().text = string.Format("{0}", Money.ToString("N0"));
     }
     void EventProcess()
     {
@@ -212,11 +230,19 @@ public class MainMoneySystem : MonoBehaviour
     {
         talkCargo.ConverEvnetText(id);
     }
+    public void SetMoney(string saveMoney)
+    {
+        Money = Convert.ToDouble(saveMoney);
+    }
+    public double GetMoney()
+    {
+        return Money;
+    }
     public void AddMoney(int temp)
     {
         Money += temp;
     }
-    public void RemoveMoney(int temp)
+    public void RemoveMoney(double temp)
     {
         Money -= temp;
     }
@@ -327,5 +353,9 @@ public class MainMoneySystem : MonoBehaviour
     public void ItemUseSlave()
     {
         
+    }
+    public void SkillUpgrade(int id)
+    {
+        skillMaster.UpgradeSkill(id, Money);
     }
 }

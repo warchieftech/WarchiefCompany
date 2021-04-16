@@ -6,6 +6,9 @@ using UnityEngine;
 public class Chief
 {
     public double workPower;
-    public double workLevel;
+    public double wpCost;
+    public double workCritical;
+    public double wcCost;
     public double handsCnt;
+    public double handsCost;
 }

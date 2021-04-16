@@ -15,4 +15,8 @@ public class MoveScean : MonoBehaviour
     {
         Application.Quit();
     }
+    public void Load()
+    {
+        PlayerPrefs.SetInt("Load", 1);
+    }
 }

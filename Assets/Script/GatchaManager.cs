@@ -66,7 +66,6 @@ public class GatchaManager : MonoBehaviour
         }
         for (int i = 0; i < pN + pR + pSR + pU + pE; i++)
         {
-            Debug.Log(pN + pR + pSR + pU + pE + "퍼센트");
             if (i < pN)
             {
                 premiumTable.Add(i, 0);
